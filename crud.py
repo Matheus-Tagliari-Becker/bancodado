@@ -108,7 +108,7 @@ def get_all_clientespreferenciais(db: Session, offset: int, limit: int):
     return db.query(models.ClientePreferencial).offset(offset).limit(limit).all()
     
 def update_clientepreferencial(db: Session, clientepreferencial_id: int, clientepreferencial: schemas.ClientePreferencialCreate):
-    db_clientepreferencial = get_clienepreferencial_by_id(db, clientepreferencial_id)
+    db_clientepreferencial = get_clientepreferencial_by_id(db, clientepreferencial_id)
     db_clientepreferencial.nome = clientepreferencial.nome
     db_clientepreferencial.email = clientepreferencial.email
     db_clientepreferencial.fixo = clientepreferencial.fixo
