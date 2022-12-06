@@ -173,7 +173,7 @@ def delete_clientepreferencial_by_id(clientepreferencial_id: int, db: Session = 
         raise HTTPException(**cie.__dict__)
         
 @app.get("/clientespreferenciais", response_model=schemas.PaginatedClientePreferencial)
-def get_all_clientes(db: Session = Depends(get_db), offset: int = 0, limit: int = 10):
+def get_all_clientespreferenciais(db: Session = Depends(get_db), offset: int = 0, limit: int = 10):
     db_clientespreferenciais = crud.get_all_clientespreferenciais(db, offset, limit)
     response = {"limit": limit, "offset": offset, "data": db_clientespreferenciais}
     return response
