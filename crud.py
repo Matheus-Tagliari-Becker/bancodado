@@ -163,7 +163,7 @@ def delete_cliente_by_id(db: Session, cliente_id: int):
     return
 
 #Funcionario
-def create_funcionario(db: Session, cliente: schemas.FuncionarioCreate):
+def create_funcionario(db: Session, funcionario: schemas.FuncionarioCreate):
     db_funcionario= models.Funcionario(**funcionario.dict())
     db.add(db_funcionario)
     db.commit()
