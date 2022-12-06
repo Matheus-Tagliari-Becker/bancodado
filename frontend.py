@@ -2,8 +2,17 @@ import requests
 
 rodando = True
 modo = 1
-url = "http://26.47.22.246:8000/"
-#url = "https://localhost:8000/"
+url = "https://localhost:8000/"
+
+#FRONTEND CONSOLE
+#Essa frontend é capaz de acessar o server em FastAPI e realizar as mudanças necessárias que sejam desejadas
+#A variável modo é uma forma de identificar onde o usuário se encontra, se fizer mais sentido, pense no modo como um índice de "cena"
+#Os requests são feitos através da biblioteca requests do Python.
+
+#Acadêmicos:
+#Matheus Tagliari Becker
+#Rômulo Pedro Thomsen
+#Luís Henrique Batista
 
 while rodando and modo != 0:
     try:
@@ -83,7 +92,6 @@ while rodando and modo != 0:
             resposta = requests.put(url + "clientes/" + uid, json = infos)
             if resposta.status_code == 200: print("Envio bem sucedido!")
             else: print("Algo ocorreu, por favor tente novamente.")
-            print(resposta)
             modo = 1
         
         if modo == 7:
@@ -126,7 +134,6 @@ while rodando and modo != 0:
             resposta = requests.post(url + "clientespreferenciais", json = infos)
             if resposta.status_code == 200: print("Envio bem sucedido!")
             else: print("Algo ocorreu, por favor tente novamente.")
-            print(resposta)
             modo = 1
         if modo == 10:
             print('Digite o ID do cliente preferencial que deseja excluir:')
@@ -162,7 +169,6 @@ while rodando and modo != 0:
             resposta = requests.put(url + "clientespreferenciais/" + uid, json = infos)
             if resposta.status_code == 200: print("Envio bem sucedido!")
             else: print("Algo ocorreu, por favor tente novamente.")
-            print(resposta)
             modo = 1
     except:
         print("Algo ocorreu de errado, retornando ao menu.")
