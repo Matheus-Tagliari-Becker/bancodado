@@ -168,7 +168,7 @@ def update_clientepreferencial(clientepreferencial_id: int, clientepreferencial:
 @app.delete("/clientespreferenciais/{clientepreferencial_id}")
 def delete_clientepreferencial_by_id(clientepreferencial_id: int, db: Session = Depends(get_db)):
     try:
-        return crud.delete_clientepreferencial_by_id(db, cliente_id)
+        return crud.delete_clientepreferencial_by_id(db, clientepreferencial_id)
     except ClientePreferencialException as cie:
         raise HTTPException(**cie.__dict__)
         
