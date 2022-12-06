@@ -123,7 +123,7 @@ def get_all_clientes(db: Session = Depends(get_db), offset: int = 0, limit: int 
 #Funcionario
     
 @app.post("/funcionarios", response_model=schemas.Funcionario)
-def create_funcionario(cliente: schemas.FuncionarioCreate, db: Session = Depends(get_db)):
+def create_funcionario(funcionario: schemas.FuncionarioCreate, db: Session = Depends(get_db)):
     try:
         return crud.create_funcionario(db, funcionario)
     except FuncionarioException as cie:
