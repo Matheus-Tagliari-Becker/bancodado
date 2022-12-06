@@ -15,34 +15,34 @@ app = FastAPI()
 @app.get("/api/usuarios/{usuario_id}", response_model=schemas.Usuario)
 def get_usuario_by_id(usuario_id: int, db: Session = Depends(get_db)):
     try:
-        return crud.get_usuario_by_id(db, usuario_id)
+        return crud.get_usuario_by_id(db, usuario_id) #SELECT * FROM `usuarios` where id =?
     except UsuarioException as cie:
         raise HTTPException(**cie.__dict__)
 
 @app.get("/api/usuarios", response_model=schemas.PaginatedUsuario)
 def get_all_usuarios(db: Session = Depends(get_db), offset: int = 0, limit: int = 10):
-    db_usuarios = crud.get_all_usuarios(db, offset, limit)
+    db_usuarios = crud.get_all_usuarios(db, offset, limit) #SELECT * FROM `usuarios` 
     response = {"limit": limit, "offset": offset, "data": db_usuarios}
     return response
 
 @app.post("/api/usuarios", response_model=schemas.Usuario)
 def create_usuario(usuario: schemas.UsuarioCreate, db: Session = Depends(get_db)):
     try:
-        return crud.create_usuario(db, usuario)
+        return crud.create_usuario(db, usuario) # INSERT INTO `usuarios` (`id`, `nome`, `email`, `senha`) VALUES (NULL, NULL, NULL, NULL)
     except UsuarioException as cie:
         raise HTTPException(**cie.__dict__)
 
 @app.put("/api/usuarios/{usuario_id}", response_model=schemas.Usuario)
 def update_usuario(usuario_id: int, usuario: schemas.UsuarioCreate, db: Session = Depends(get_db)):
     try:
-        return crud.update_usuario(db, usuario_id, usuario)
+        return crud.update_usuario(db, usuario_id, usuario) # UPDATE `usuarios` SET `id` = '?', `nome` = '?', `email` = '?', `?` = '?' WHERE `usuarios`.`id` = ?
     except UsuarioException as cie:
         raise HTTPException(**cie.__dict__)
 
 @app.delete("/api/usuarios/{usuario_id}")
 def delete_usuario_by_id(usuario_id: int, db: Session = Depends(get_db)):
     try:
-        return crud.delete_usuario_by_id(db, usuario_id)
+        return crud.delete_usuario_by_id(db, usuario_id) # "DELETE FROM `usuarios` WHERE `usuarios`.`id` = ?"
     except UsuarioException as cie:
         raise HTTPException(**cie.__dict__)
 
@@ -67,27 +67,27 @@ async def user_login(usuario: schemas.UsuarioLoginSchema= Body(...), db: Session
 @app.post("/fornecedores", response_model=schemas.Fornecedor)
 def create_fornecedor(fornecedor: schemas.FornecedorCreate, db: Session = Depends(get_db)):
     try:
-        return crud.create_fornecedor(db, fornecedor)
+        return crud.create_fornecedor(db, fornecedor) #INSERT INTO `fornecedores` (`id`, `nome`, `email`, `fixo`, `celular`, `cnpj`) VALUES (NULL, NULL, NULL, NULL, NULL, NULL)
     except FornecedorException as cie:
         raise HTTPException(**cie.__dict__)
     
 @app.put("/fornecedores/{fornecedor_id}", response_model=schemas.Fornecedor)
 def update_fornecedor(fornecedor_id: int, fornecedor: schemas.FornecedorCreate, db: Session = Depends(get_db)):
     try:
-        return crud.update_fornecedor(db, fornecedor_id, fornecedor)
+        return crud.update_fornecedor(db, fornecedor_id, fornecedor) #UPDATE `fornecedores` SET `id` = NULL, `nome` = '', `email` = '', `fixo` = '', `celular` = '', `cnpj` = '' WHERE `fornecedores`.`id` = 1
     except FornecedorException as cie:
         raise HTTPException(**cie.__dict__)
         
 @app.delete("/fornecedores/{fornecedor_id}")
 def delete_fornecedor_by_id(fornecedor_id: int, db: Session = Depends(get_db)):
     try:
-        return crud.delete_fornecedor_by_id(db, fornecedor_id)
+        return crud.delete_fornecedor_by_id(db, fornecedor_id) #"DELETE FROM `fornecedores` WHERE `fornecedores`.`id` = 1"
     except FornecedorException as cie:
         raise HTTPException(**cie.__dict__)
         
 @app.get("/fornecedores", response_model=schemas.PaginatedFornecedor)
 def get_all_fornecedores(db: Session = Depends(get_db), offset: int = 0, limit: int = 10):
-    db_fornecedores = crud.get_all_fornecedores(db, offset, limit)
+    db_fornecedores = crud.get_all_fornecedores(db, offset, limit) #SELECT * FROM `fornecedor` 
     response = {"limit": limit, "offset": offset, "data": db_fornecedores}
     return response
         
