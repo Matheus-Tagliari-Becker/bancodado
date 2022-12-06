@@ -71,7 +71,7 @@ def create_fornecedor(fornecedor: schemas.FornecedorCreate, db: Session = Depend
     except FornecedorException as cie:
         raise HTTPException(**cie.__dict__)
     
-@app.put("/fornecedores/{fornecedor_id}}", response_model=schemas.Fornecedor)
+@app.put("/fornecedores/{fornecedor_id}", response_model=schemas.Fornecedor)
 def update_fornecedor(fornecedor_id: int, fornecedor: schemas.FornecedorCreate, db: Session = Depends(get_db)):
     try:
         return crud.update_fornecedor(db, fornecedor_id, fornecedor)
@@ -100,7 +100,7 @@ def create_cliente(cliente: schemas.ClienteCreate, db: Session = Depends(get_db)
     except ClienteException as cie:
         raise HTTPException(**cie.__dict__)
     
-@app.put("/clientes/{cliente_id}}", response_model=schemas.Cliente)
+@app.put("/clientes/{cliente_id}", response_model=schemas.Cliente)
 def update_cliente(cliente_id: int, cliente: schemas.ClienteCreate, db: Session = Depends(get_db)):
     try:
         return crud.update_cliente(db, cliente_id, cliente)
@@ -129,7 +129,7 @@ def create_funcionario(cliente: schemas.FuncionarioCreate, db: Session = Depends
     except FuncionarioException as cie:
         raise HTTPException(**cie.__dict__)
     
-@app.put("/funcionarios/{funcionario_id}}", response_model=schemas.Funcionario)
+@app.put("/funcionarios/{funcionario_id}", response_model=schemas.Funcionario)
 def update_funcionario(funcionario_id: int, funcionario: schemas.FuncionarioCreate, db: Session = Depends(get_db)):
     try:
         return crud.update_funcionario(db, funcionario_id, funcionario)
@@ -158,7 +158,7 @@ def create_clientepreferencial(clientepreferencial: schemas.ClientePreferencialC
     except ClientePreferencialException as cie:
         raise HTTPException(**cie.__dict__)
     
-@app.put("/clientespreferenciais/{clientepreferencial_id}}", response_model=schemas.ClientePreferencial)
+@app.put("/clientespreferenciais/{clientepreferencial_id}", response_model=schemas.ClientePreferencial)
 def update_clientepreferencial(clientepreferencial_id: int, clientepreferencial: schemas.ClientePreferencialCreate, db: Session = Depends(get_db)):
     try:
         return crud.update_clientepreferencial(db, clientepreferencial_id, clientepreferencial)
@@ -187,7 +187,7 @@ def create_produto(produto: schemas.ProdutoCreate, db: Session = Depends(get_db)
     except ProdutoException as cie:
         raise HTTPException(**cie.__dict__)
     
-@app.put("/produtos/{produto_id}}", response_model=schemas.Produto)
+@app.put("/produtos/{produto_id}", response_model=schemas.Produto)
 def update_produto(produto_id: int, produto: schemas.ProdutoCreate, db: Session = Depends(get_db)):
     try:
         return crud.update_produto(db, produto_id, produto)
