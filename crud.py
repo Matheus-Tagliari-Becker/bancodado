@@ -120,7 +120,7 @@ def update_clientepreferencial(db: Session, clientepreferencial_id: int, cliente
     return clientepreferencial
 
 def delete_clientepreferencial_by_id(db: Session, clientepreferencial_id: int):
-    db_clientepreferencial = get_clienepreferencial_by_id(db, clientepreferencial_id)
+    db_clientepreferencial = get_clientepreferencial_by_id(db, clientepreferencial_id)
     db.delete(db_clientepreferencial)
     db.commit()
     return
