@@ -4,6 +4,8 @@ rodando = True
 modo = 1
 url = "https://localhost:8000/"
 
+#Tirar ssl (usar http) se for necessário
+
 #FRONTEND CONSOLE
 #Essa frontend é capaz de acessar o server em FastAPI e realizar as mudanças necessárias que sejam desejadas
 #A variável modo é uma forma de identificar onde o usuário se encontra, se fizer mais sentido, pense no modo como um índice de "cena"
